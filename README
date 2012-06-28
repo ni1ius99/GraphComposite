@@ -1,0 +1,5 @@
+Notes:
+
+The solution is in Visual Studio 2010 format. If you're using VS2008, you must install the VS2010 compatibility pack in order to open the solution.
+
+This solution has a reference to Microsoft.VisualStudioQualityTools.UnitTestFramework which is not available on the basic edition of Visual Studio.
