@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8E5A3CD1-DA77-4E53-AA0E-CDF8344B2E85}"
+	ProjectSection(SolutionItems) = preProject
+		GraphComposite.vsmdi = GraphComposite.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{94F9B1A0-37A1-4F16-B2DD-02CAAF56BD33}"
+	ProjectSection(SolutionItems) = preProject
+		GraphComposite.xsd = GraphComposite.xsd
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphComposite", "GraphComposite\GraphComposite.csproj", "{7E6AEAD2-490B-4670-8E47-B962E3384D41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphComposite.Tests", "GraphComposite.Tests\GraphComposite.Tests.csproj", "{D4A5CF3F-1D4D-4A4F-9A7E-7E533E5AF661}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = GraphComposite.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E6AEAD2-490B-4670-8E47-B962E3384D41}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{7E6AEAD2-490B-4670-8E47-B962E3384D41}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{7E6AEAD2-490B-4670-8E47-B962E3384D41}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{7E6AEAD2-490B-4670-8E47-B962E3384D41}.Debug|x86.ActiveCfg = Debug|x86
+		{7E6AEAD2-490B-4670-8E47-B962E3384D41}.Debug|x86.Build.0 = Debug|x86
+		{7E6AEAD2-490B-4670-8E47-B962E3384D41}.Release|Any CPU.ActiveCfg = Release|x86
+		{7E6AEAD2-490B-4670-8E47-B962E3384D41}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{7E6AEAD2-490B-4670-8E47-B962E3384D41}.Release|Mixed Platforms.Build.0 = Release|x86
+		{7E6AEAD2-490B-4670-8E47-B962E3384D41}.Release|x86.ActiveCfg = Release|x86
+		{7E6AEAD2-490B-4670-8E47-B962E3384D41}.Release|x86.Build.0 = Release|x86
+		{D4A5CF3F-1D4D-4A4F-9A7E-7E533E5AF661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4A5CF3F-1D4D-4A4F-9A7E-7E533E5AF661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4A5CF3F-1D4D-4A4F-9A7E-7E533E5AF661}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D4A5CF3F-1D4D-4A4F-9A7E-7E533E5AF661}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D4A5CF3F-1D4D-4A4F-9A7E-7E533E5AF661}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D4A5CF3F-1D4D-4A4F-9A7E-7E533E5AF661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4A5CF3F-1D4D-4A4F-9A7E-7E533E5AF661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4A5CF3F-1D4D-4A4F-9A7E-7E533E5AF661}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D4A5CF3F-1D4D-4A4F-9A7E-7E533E5AF661}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D4A5CF3F-1D4D-4A4F-9A7E-7E533E5AF661}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CompositeGraph>
+  <Edge startId="..." endId="..."/>
+  <Edge startId="..." endId="..."/>
+  <Node id="...">
+    <Node id="..."/>
+    <Node id="..."/>
+  </Node>
+  <Node id="..."/>
+</CompositeGraph>
