@@ -32,12 +32,28 @@ namespace GraphComposite.Tests
     public class GraphCompositeBuilderTest
     {
         /// <summary>
-        /// Tests the constructor.
+        /// Tests the three-argument constructor.
         /// </summary>
         [TestMethod]
-        public void GraphCompositeBuilderConstructorTest()
+        public void GraphCompositeBuilder3ArgConstructorTest()
         {
             GraphCompositeBuilder<int, string> gcb = new GraphCompositeBuilder<int, string>(EqualityComparer<int>.Default, 0, "root");
+        }
+
+        /// <summary>
+        /// Tests the four-argument constructor and also the Configuration property.
+        /// </summary>
+        [TestMethod]
+        public void GraphCompositeBuilder4ArgConstructorTest()
+        {
+            GraphCompositeBuilder<int, string> gcb = new GraphCompositeBuilder<int, string>(
+                new GraphCompositeBuilderConfiguration(false, true),
+                EqualityComparer<int>.Default,
+                0,
+                "root");
+
+            Assert.IsFalse(gcb.Configuration.Hierarchical);
+            Assert.IsTrue(gcb.Configuration.Acyclic);
         }
 
         /// <summary>

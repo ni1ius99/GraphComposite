@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="CycleAttemptedException.cs" company="Fluxtree Technologies LLC.">
+// <copyright file="GraphException.cs" company="Fluxtree Technologies LLC.">
 // This is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -14,7 +14,7 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace GraphComposite
+namespace GraphComposite.Exceptions
 {
     using System;
     using System.Collections.Generic;
@@ -22,15 +22,15 @@ namespace GraphComposite
     using System.Text;
 
     /// <summary>
-    /// Exception for attempt to add an edge that would create a cycle.
+    /// General exception type for GraphComposites.
     /// </summary>
-    public class CycleAttemptedException : Exception
+    public class GraphException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the CycleAttemptedException class.
+        /// Initializes a new instance of the GraphException class.
         /// </summary>
         /// <param name="s">Message string.</param>
-        public CycleAttemptedException(string s)
+        public GraphException(string s)
             : base(s)
         {
         }

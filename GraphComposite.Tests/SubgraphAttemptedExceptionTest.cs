@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="AddDuplicateGraphException.cs" company="Fluxtree Technologies LLC.">
+// <copyright file="SubgraphAttemptedExceptionTest.cs" company="Fluxtree Technologies LLC.">
 // This is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -14,25 +14,32 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace GraphComposite
+
+namespace GraphComposite.Tests
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using GraphComposite.Exceptions;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// Exception for attempt to add a duplicate node.
+    /// Tests for the SubgraphAttemptedException class.
     /// </summary>
-    public class AddDuplicateGraphException : GraphException
+    [TestClass]
+    public class SubgraphAttemptedExceptionTest
     {
         /// <summary>
-        /// Initializes a new instance of the AddDuplicateGraphException class.
+        /// Test that the exception is thrown if a subgraph is attempted on a flat graph.
         /// </summary>
-        /// <param name="s">Message string.</param>
-        public AddDuplicateGraphException(string s)
-            : base(s)
+        [TestMethod]
+        [ExpectedException(typeof(SubgraphAttemptedException))]
+        public void SubgraphAttemptedExceptionThrowTest()
         {
+            GraphCompositeBuilderConfiguration config = new GraphCompositeBuilderConfiguration(false, true);
+            GraphCompositeBuilder<int, string> gcb = new GraphCompositeBuilder<int, string>(config, EqualityComparer<int>.Default, 0, "root");
+            gcb.AddNode(0, 1, "A", true);
         }
     }
 }

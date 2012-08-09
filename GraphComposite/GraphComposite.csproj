@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\GraphComposite.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -38,23 +39,25 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AddDuplicateGraphException.cs">
+    <Compile Include="Exceptions\AddDuplicateGraphException.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AddEdgeToRootGraphException.cs" />
-    <Compile Include="AddToLeafGraphException.cs">
+    <Compile Include="Exceptions\AddEdgeToRootGraphException.cs" />
+    <Compile Include="Exceptions\AddToLeafGraphException.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CycleAttemptedException.cs" />
+    <Compile Include="Exceptions\CycleAttemptedException.cs" />
     <Compile Include="ConvertFromGraph.cs" />
     <Compile Include="ConvertToGraph.cs" />
+    <Compile Include="Exceptions\SubgraphAttemptedException.cs" />
     <Compile Include="GraphComposite.cs" />
     <Compile Include="GraphCompositeBuilder.cs" />
-    <Compile Include="GraphException.cs" />
-    <Compile Include="GraphCompositeTraversal.cs" />
+    <Compile Include="Exceptions\GraphException.cs" />
+    <Compile Include="GraphCompositeBuilderConfiguration.cs" />
+    <Compile Include="Traversal\GraphCompositeTraversal.cs" />
     <Compile Include="Converters\ConvertFromGraphToXElement.cs" />
     <Compile Include="Converters\ConvertFromXElementToGraph.cs" />
-    <Compile Include="KeyNotFoundGraphException.cs">
+    <Compile Include="Exceptions\KeyNotFoundGraphException.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

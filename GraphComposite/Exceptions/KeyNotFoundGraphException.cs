@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="AddToLeafGraphException.cs" company="Fluxtree Technologies LLC.">
+// <copyright file="KeyNotFoundGraphException.cs" company="Fluxtree Technologies LLC.">
 // This is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -14,7 +14,7 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace GraphComposite
+namespace GraphComposite.Exceptions
 {
     using System;
     using System.Collections.Generic;
@@ -22,15 +22,15 @@ namespace GraphComposite
     using System.Text;
 
     /// <summary>
-    /// Exception while adding a leaf node.
+    /// Exception for key not found.
     /// </summary>
-    public class AddToLeafGraphException : GraphException
+    public class KeyNotFoundGraphException : GraphException
     {
         /// <summary>
-        /// Initializes a new instance of the AddToLeafGraphException class.
+        /// Initializes a new instance of the KeyNotFoundGraphException class.
         /// </summary>
         /// <param name="s">Message string.</param>
-        public AddToLeafGraphException(string s)
+        public KeyNotFoundGraphException(string s)
             : base(s)
         {
         }

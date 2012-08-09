@@ -53,12 +53,14 @@
     <Compile Include="ConvertFromGraphToXElementTest.cs" />
     <Compile Include="ConvertFromXElementToGraphTest.cs" />
     <Compile Include="CycleAttemptedExceptionTest.cs" />
+    <Compile Include="GraphCompositeBuilderConfigurationTest.cs" />
     <Compile Include="GraphCompositeTest.cs" />
     <Compile Include="GraphExceptionTest.cs" />
     <Compile Include="KeyNotFoundGraphExceptionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GraphCompositeBuilderTest.cs" />
     <Compile Include="GraphCompositeTraversalTest.cs" />
+    <Compile Include="SubgraphAttemptedExceptionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GraphComposite\GraphComposite.csproj">

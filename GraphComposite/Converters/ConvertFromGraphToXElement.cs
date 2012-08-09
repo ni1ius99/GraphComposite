@@ -72,19 +72,11 @@ namespace GraphComposite
         }
 
         /// <summary>
-        /// Override of ConvertFromGraph.OnIncomingEdge.
-        /// </summary>
-        /// <param name="key">Key of the node the edge is from.</param>
-        protected override void OnIncomingEdge(Tkey key)
-        {
-            return;
-        }
-
-        /// <summary>
         /// Override of ConvertFromGraph.OnOutgoingEdge.
         /// </summary>
-        /// <param name="key">Key of the node the edge is going to.</param>
-        protected override void OnOutgoingEdge(Tkey key)
+        /// <param name="sourceKey">Key of the node that is the edge source.</param>
+        /// <param name="targetKey">Key of the node that is the edge target.</param>
+        protected override void OnEdge(Tkey sourceKey, Tkey targetKey)
         {
             return;
         }

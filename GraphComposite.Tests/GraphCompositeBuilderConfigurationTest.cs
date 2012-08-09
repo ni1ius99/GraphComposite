@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="KeyNotFoundGraphExceptionTest.cs" company="Fluxtree Technologies LLC.">
+// <copyright file="GraphCompositeBuilderConfigurationTest.cs" company="Fluxtree Technologies LLC.">
 // This is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -14,41 +14,47 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // </copyright>
 //-----------------------------------------------------------------------
+
 namespace GraphComposite.Tests
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using GraphComposite.Exceptions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// Test class for KeyNotFoundGraphExceptionTest class.
+    /// Tests for the GraphCompositeBuilderConfiguration class.
     /// </summary>
     [TestClass]
-    public class KeyNotFoundGraphExceptionTest
+    public class GraphCompositeBuilderConfigurationTest
     {
         /// <summary>
-        /// General test method for AddToLeafGraphException class.
+        /// Test method for the two-argument constructor.
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(KeyNotFoundGraphException))]
-        public void KeyNotFoundGraphExceptionThrowTest1()
+        public void GraphCompositeBuilderConfigurationConstructorTest()
         {
-            GraphCompositeBuilder<int, string> gcb = new GraphCompositeBuilder<int, string>(EqualityComparer<int>.Default, 0, "root");
-            gcb.AddNode(1, 2, "C1", false);
+            GraphCompositeBuilderConfiguration config = new GraphCompositeBuilderConfiguration(false, true);
+
+            Assert.IsFalse(config.Hierarchical);
+            Assert.IsTrue(config.Acyclic);
+
+            GraphCompositeBuilderConfiguration config2 = new GraphCompositeBuilderConfiguration(true, false);
+
+            Assert.IsTrue(config2.Hierarchical);
+            Assert.IsFalse(config2.Acyclic);
         }
 
         /// <summary>
-        /// General test method for AddToLeafGraphException class.
+        /// Test method for the default constructor.
         /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof(KeyNotFoundGraphException))]
-        public void KeyNotFoundGraphExceptionThrowTest2()
+        public void GraphCompositeBuilderConfigurationDefaultConstructorTest()
         {
-            GraphCompositeBuilder<int, string> gcb = new GraphCompositeBuilder<int, string>(EqualityComparer<int>.Default, 0, "root");
-            gcb.AddEdge(0, 1);
+            GraphCompositeBuilderConfiguration config = new GraphCompositeBuilderConfiguration();
+
+            Assert.IsTrue(config.Hierarchical);
+            Assert.IsFalse(config.Acyclic);
         }
     }
 }

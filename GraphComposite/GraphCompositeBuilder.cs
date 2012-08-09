@@ -20,6 +20,7 @@ namespace GraphComposite
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using GraphComposite.Exceptions;
 
     /// <summary>
     /// Interface class for GraphComposites. Controls modification of the GraphComposite.
@@ -28,6 +29,11 @@ namespace GraphComposite
     /// <typeparam name="Tval">Tval of the GraphComposite.</typeparam>
     public class GraphCompositeBuilder<Tkey, Tval>
     {
+        /// <summary>
+        /// Configuration of the builder.
+        /// </summary>
+        private GraphCompositeBuilderConfiguration config = new GraphCompositeBuilderConfiguration();
+
         /// <summary>
         /// The root GraphComposite.
         /// </summary>
@@ -54,6 +60,30 @@ namespace GraphComposite
             this.allItems = new Dictionary<Tkey, GraphComposite<Tkey, Tval>>(comparer);
             this.root = new GraphComposite<Tkey, Tval>(rootKey, rootVal, true, null);
             this.allItems.Add(rootKey, this.root);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the GraphCompositeBuilder class.
+        /// </summary>
+        /// <param name="cfg">Configuration the builder will use.</param>
+        /// <param name="comparer">Comparer for nodes.</param>
+        /// <param name="rootKey">Key of the root node.</param>
+        /// <param name="rootVal">Value of the root node.</param>
+        public GraphCompositeBuilder(GraphCompositeBuilderConfiguration cfg, IEqualityComparer<Tkey> comparer, Tkey rootKey, Tval rootVal)
+            : this(comparer, rootKey, rootVal)
+        {
+            this.config = cfg;
+        }
+
+        /// <summary>
+        /// Gets the configuration of the builder.
+        /// </summary>
+        public GraphCompositeBuilderConfiguration Configuration
+        {
+            get
+            {
+                return this.config;
+            }
         }
 
         /// <summary>
@@ -94,6 +124,13 @@ namespace GraphComposite
             else if (!containingGraph.IsGraph)
             {
                 throw new AddToLeafGraphException(containingGraphKey.ToString() + " is not a graph");
+            }
+            else if (!this.config.Hierarchical)
+            {
+                if (isGraph)
+                {
+                    throw new SubgraphAttemptedException("Attempt to add a subgraph to a non-hierarchical graph");
+                }
             }
 
             if (this.allItems.ContainsKey(thisKey))
@@ -144,19 +181,20 @@ namespace GraphComposite
                     throw new AddDuplicateGraphException("duplicate edge attempt from " + key1.ToString() + " to " + key2.ToString());
                 }
 
-                // check for cycles
-                Func<GraphComposite<Tkey, Tval>, bool> match =
-                    c => { return allItems.Comparer.Equals(c.Key, val1.Key); };
-                if (GraphCompositeTraversal<Tkey, Tval>.FindFirstOnPaths(val2, match) != null)
+                if (this.config.Acyclic)
                 {
-                    throw new CycleAttemptedException("edge between " + key1.ToString() + " and " + key2.ToString());
+                    // check for cycles
+                    Func<GraphComposite<Tkey, Tval>, bool> match =
+                        c => { return allItems.Comparer.Equals(c.Key, val1.Key); };
+                    if (GraphCompositeTraversal<Tkey, Tval>.FindFirstOnPaths(val2, match) != null)
+                    {
+                        throw new CycleAttemptedException("edge between " + key1.ToString() + " and " + key2.ToString());
+                    }
                 }
-                else
-                {
-                    val1.Outgoing.Add(val2);
-                    val2.Incoming.Add(val1);
-                    this.allEdges.Add(new KeyValuePair<Tkey, Tkey>(key1, key2));
-                }
+
+                val1.Outgoing.Add(val2);
+                val2.Incoming.Add(val1);
+                this.allEdges.Add(new KeyValuePair<Tkey, Tkey>(key1, key2));
             }
         }
 

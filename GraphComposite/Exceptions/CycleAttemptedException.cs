@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="AddDuplicateGraphExceptionTest.cs" company="Fluxtree Technologies LLC.">
+// <copyright file="CycleAttemptedException.cs" company="Fluxtree Technologies LLC.">
 // This is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -14,33 +14,25 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // </copyright>
 //-----------------------------------------------------------------------
-namespace GraphComposite.Tests
+namespace GraphComposite.Exceptions
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using GraphComposite.Exceptions;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// Test class for AddDuplicateGraphException class.
+    /// Exception for attempt to add an edge that would create a cycle.
     /// </summary>
-    [TestClass]
-    public class AddDuplicateGraphExceptionTest
+    public class CycleAttemptedException : Exception
     {
         /// <summary>
-        /// General test method for AddDuplicateGraphExceptionTest.
+        /// Initializes a new instance of the CycleAttemptedException class.
         /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof(AddDuplicateGraphException))]
-        public void AddDuplicateGraphExceptionThrowTest()
+        /// <param name="s">Message string.</param>
+        public CycleAttemptedException(string s)
+            : base(s)
         {
-            GraphCompositeBuilder<int, string> gcb = new GraphCompositeBuilder<int, string>(EqualityComparer<int>.Default, 0, "root");
-            gcb.AddNode(0, 1, "C1", false);
-            gcb.AddNode(0, 2, "C2", false);
-            gcb.AddEdge(1, 2);
-            gcb.AddEdge(1, 2);
         }
     }
 }

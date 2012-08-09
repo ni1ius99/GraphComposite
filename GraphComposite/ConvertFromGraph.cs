@@ -50,12 +50,12 @@ namespace GraphComposite
 
                     foreach (GraphComposite<Tkey, Tval> g2 in thisC.Outgoing)
                     {
-                        OnOutgoingEdge(g2.Key);
+                        OnEdge(thisC.Key, g2.Key);
                     }
 
                     foreach (GraphComposite<Tkey, Tval> g2 in thisC.Incoming)
                     {
-                        OnIncomingEdge(g2.Key);
+                        OnEdge(g2.Key, thisC.Key);
                     }
                 };
 
@@ -116,15 +116,10 @@ namespace GraphComposite
         protected abstract T GetChild(T parent, Tkey key);
 
         /// <summary>
-        /// Action to perform on a T corresponding to a node for each incoming edge.
+        /// Action to perform on discovery of an edge.
         /// </summary>
-        /// <param name="key">Key for node.</param>
-        protected abstract void OnIncomingEdge(Tkey key);
-
-        /// <summary>
-        /// Action to perform on a T corresponding to a node for each outgoing edge.
-        /// </summary>
-        /// <param name="key">Key for node.</param>
-        protected abstract void OnOutgoingEdge(Tkey key);
+        /// <param name="sourceKey">Key for node that is the source of the edge.</param>
+        /// <param name="targetKey">Key for node that is the target of the edge.</param>
+        protected abstract void OnEdge(Tkey sourceKey, Tkey targetKey);
     }
 }
